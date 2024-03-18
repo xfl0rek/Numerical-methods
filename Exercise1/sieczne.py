@@ -13,11 +13,11 @@ def sieczne(a, b, rodzaj, epsilon, max_iter, ktory_warunek):
             a, b = b, c
 
             if a == b:
-                print(f"Znalezione miejsce zerowe: {c} po {iteracja} iteracjach.")
+                print(f"Znalezione miejsce zerowe: {c} po {iteracja + 1} iteracjach.")
                 return c
 
             iteracja += 1
-        print(f"Znalezione miejsce zerowe: {c} po {iteracja} iteracjach.")
+        print(f"Znalezione miejsce zerowe: {c} po {iteracja + 1} iteracjach.")
         return c
 
 
