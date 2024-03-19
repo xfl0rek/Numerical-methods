@@ -1,6 +1,5 @@
 import horner
 import numpy as np
-import math
 
 
 def wielomian(arg):
