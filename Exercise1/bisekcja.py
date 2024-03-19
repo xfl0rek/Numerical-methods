@@ -4,11 +4,12 @@ import funkcje as f
 def bisekcja(a, b, rodzaj, epsilon, max_iter, ktory_warunek):
     if f.wartosc_funkcji(rodzaj, a) * f.wartosc_funkcji(rodzaj, b) < 0:
         c = 0
-        iteracja = 0
-        while warunek(ktory_warunek, a, b, c, rodzaj) >= epsilon and iteracja < max_iter:
+        iteracja = 1
+        while warunek(ktory_warunek, a, b, c, rodzaj) >= epsilon and iteracja <= max_iter:
             c = (a + b) / 2
             if f.wartosc_funkcji(rodzaj, c) == 0:
-                print(f"\nMetoda bisekcji znalazła dokładne rozwiązanie po {iteracja + 1} iteracjach. "
+                epsilon = abs(f.wartosc_funkcji(rodzaj, c))
+                print(f"\nMetoda bisekcji znalazła dokładne rozwiązanie po {iteracja} iteracjach z dokładnością {epsilon}. "
                       f"\nZnalezione miejsce zerowe: {c}")
                 return c
             elif f.wartosc_funkcji(rodzaj, a) * f.wartosc_funkcji(rodzaj, c) < 0:
@@ -17,7 +18,7 @@ def bisekcja(a, b, rodzaj, epsilon, max_iter, ktory_warunek):
                 a = c
             iteracja += 1
         epsilon = abs(f.wartosc_funkcji(rodzaj, c))
-        print(f"\nMetoda bisekcji znalazła rozwiązanie po {iteracja + 1} iteracjach z dokładnością {epsilon}."
+        print(f"\nMetoda bisekcji znalazła rozwiązanie po {iteracja} iteracjach z dokładnością {epsilon}."
               f"\nZnalezione miejsce zerowe: {c}")
         return c
     else:

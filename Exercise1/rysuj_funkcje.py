@@ -15,7 +15,7 @@ def rysuj_funkcje(rodzaj, a, b, miejsce_zerowe_bisekcja, miejsce_zerowe_sieczna)
     elif rodzaj == '3':
         funkcja = "2^x - 2"
     elif rodzaj == '4':
-        funkcja = "sin(x^2 + 2x + 1)"
+        funkcja = "2^(x ^ 2 + 2x + 1) - 2"
 
     plt.plot(argumenty, wartosci, label=funkcja)
     plt.scatter(miejsce_zerowe_bisekcja, f.wartosc_funkcji(rodzaj, miejsce_zerowe_bisekcja), color='red', marker='o',

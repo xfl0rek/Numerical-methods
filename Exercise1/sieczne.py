@@ -3,9 +3,9 @@ import funkcje as f
 
 def sieczne(a, b, rodzaj, epsilon, max_iter, ktory_warunek):
     if f.wartosc_funkcji(rodzaj, a) * f.wartosc_funkcji(rodzaj, b) < 0 and f.zerowanie_pochodnej(a, b, rodzaj):
-        iteracja = 0
+        iteracja = 1
         c = 0
-        while warunek(ktory_warunek, a, b, c, rodzaj) >= epsilon and iteracja < max_iter:
+        while warunek(ktory_warunek, a, b, c, rodzaj) >= epsilon and iteracja <= max_iter:
             if f.wartosc_funkcji(rodzaj, b) - f.wartosc_funkcji(rodzaj, a) == 0:
                 print("Niemożliwe jest dzielenie przez 0.")
                 return None
@@ -13,11 +13,13 @@ def sieczne(a, b, rodzaj, epsilon, max_iter, ktory_warunek):
             a, b = b, c
 
             if a == b:
-                print(f"Znalezione miejsce zerowe: {c} po {iteracja + 1} iteracjach.")
+                epsilon = abs(f.wartosc_funkcji(rodzaj, c))
+                print(f"Metoda siecznych znalazła miejsce zerowe: {c} po {iteracja} iteracjach z dokładnością {epsilon}.")
                 return c
 
             iteracja += 1
-        print(f"Znalezione miejsce zerowe: {c} po {iteracja + 1} iteracjach.")
+        epsilon = abs(f.wartosc_funkcji(rodzaj, c))
+        print(f"Metoda siecznych znalazła miejsce zerowe: {c} po {iteracja} iteracjach z dokładnością {epsilon}.")
         return c
 
 

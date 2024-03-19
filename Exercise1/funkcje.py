@@ -1,5 +1,6 @@
 import horner
 import numpy as np
+import math
 
 
 def wielomian(arg):
@@ -16,7 +17,7 @@ def wykladnicza(arg):
 
 
 def zlozenie_funkcji(arg):
-    return np.sin(arg ** 2 + 2 * arg + 1)
+    return 2 ** (horner.horner([1, 2, 1], arg, 3)) - 2
 
 
 def wartosc_funkcji(rodzaj, arg):
@@ -40,7 +41,7 @@ def pochodna(rodzaj, x):
     elif rodzaj == "3":
         return (2 ** x) * np.log(2)
     elif rodzaj == "4":
-        return (2 * x + 2) * np.cos((x ** 2) + 2 * x + 1)
+        return np.log(2) * 2 ** (horner.horner([1, 2, 1], x, 3)) * (2 * x + 2)
     else:
         print("Podano niepoprawny rodzaj funkcji.")
 

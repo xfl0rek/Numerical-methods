@@ -31,7 +31,7 @@ def main():
         print("1. Wielomian (x^2 + 4x - 5)")
         print("2. Funkcja trygonometryczna (2sin(4x)")
         print("3. Wykładnicza (2^x - 2)")
-        print("4. Złożenie funkcji (sin(x ^ 2 + 2x + 1))")
+        print("4. Złożenie funkcji (2^(x ^ 2 + 2x + 1) - 2)")
         print("5. Koniec\n")
 
         wybor = input("Wybierz funkcje: ")
@@ -46,8 +46,6 @@ def main():
             wynik2 = sieczne.sieczne(a, b, wybor, epsilon, max_iter, wybor_kryterium)
             if wynik is not None and wynik2 is not None:
                 rysuj_funkcje.rysuj_funkcje(wybor, a, b, wynik, wynik2)
-            print(wynik)
-            print(wynik2)
         if wybor == "2":
             print("Podaj lewy kraniec przedziału:")
             a = float(input())
@@ -58,8 +56,6 @@ def main():
             wynik2 = sieczne.sieczne(a, b, wybor, epsilon, max_iter, wybor_kryterium)
             if wynik is not None and wynik2 is not None:
                 rysuj_funkcje.rysuj_funkcje(wybor, a, b, wynik, wynik2)
-            print(wynik)
-            print(wynik2)
         if wybor == "3":
             print("Podaj lewy kraniec przedziału:")
             a = float(input())
@@ -70,8 +66,6 @@ def main():
             wynik2 = sieczne.sieczne(a, b, wybor, epsilon, max_iter, wybor_kryterium)
             if wynik is not None and wynik2 is not None:
                 rysuj_funkcje.rysuj_funkcje(wybor, a, b, wynik, wynik2)
-            print(wynik)
-            print(wynik2)
         if wybor == "4":
             print("Podaj lewy kraniec przedziału:")
             a = float(input())
@@ -82,8 +76,6 @@ def main():
             wynik2 = sieczne.sieczne(a, b, wybor, epsilon, max_iter, wybor_kryterium)
             if wynik is not None and wynik2 is not None:
                 rysuj_funkcje.rysuj_funkcje(wybor, a, b, wynik, wynik2)
-            print(wynik)
-            print(wynik2)
         if wybor == "5":
             menu = False
 
