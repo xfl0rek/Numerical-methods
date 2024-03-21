@@ -1,6 +1,7 @@
 import bisekcja
 import sieczne
 import rysuj_funkcje
+from decimal import Decimal as d
 
 
 def kryterium_zatrzymania():
@@ -21,7 +22,7 @@ def kryterium_zatrzymania():
         return wybor_kryterium, epsilon, max_iter
     elif wybor_kryterium == "3":
         max_iter = int(input("Podaj maksymalną liczbę iteracji: "))
-        epsilon = 0.0
+        epsilon = d(0)
         return wybor_kryterium, epsilon, max_iter
 
 

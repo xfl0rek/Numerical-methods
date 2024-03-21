@@ -1,22 +1,24 @@
 import horner
 import numpy as np
+from decimal import Decimal as d
+import math
 
 
 def wielomian(arg):
     wartosc = horner.horner([-5, 4, 1], arg, 3)
-    return wartosc
+    return d(wartosc)
 
 
 def trygonometryczna(arg):
-    return 2 * np.sin(4 * arg)
+    return d(2 * math.sin(4 * arg))
 
 
 def wykladnicza(arg):
-    return 2 ** arg - 2
+    return d(2 ** arg - 2)
 
 
 def zlozenie_funkcji(arg):
-    return 2 ** (horner.horner([1, 2, 1], arg, 3)) - 2
+    return d(2 ** (horner.horner([1, 2, 1], arg, 3)) - 2)
 
 
 def wartosc_funkcji(rodzaj, arg):
@@ -34,13 +36,13 @@ def wartosc_funkcji(rodzaj, arg):
 
 def pochodna(rodzaj, x):
     if rodzaj == "1":
-        return 2 * x + 4
+        return d(2 * x + 4)
     elif rodzaj == "2":
-        return 8 * np.cos(4 * x)
+        return d(8 * np.cos(4 * x))
     elif rodzaj == "3":
-        return (2 ** x) * np.log(2)
+        return d((2 ** x) * np.log(2))
     elif rodzaj == "4":
-        return np.log(2) * 2 ** (horner.horner([1, 2, 1], x, 3)) * (2 * x + 2)
+        return d(np.log(2)) * d(2) ** d((horner.horner([1, 2, 1], x, 3))) * d((2 * x + 2))
     else:
         print("Podano niepoprawny rodzaj funkcji.")
 
@@ -48,6 +50,6 @@ def pochodna(rodzaj, x):
 def zerowanie_pochodnej(a, b, rodzaj):
     x_values = np.linspace(a, b, 1000)
     for x in x_values:
-        if pochodna(rodzaj, x) != 0:
+        if d(pochodna(rodzaj, x)) != d(0):
             return True
     return False
