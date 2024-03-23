@@ -26,3 +26,14 @@ def D(macierz):
     _U = U(_L)
     _D = _U
     return _D
+
+
+def czy_dobrze_okreslona(macierz):
+    wynik = 0
+    for i in range(len(macierz)):
+        if macierz[i][i] != 0:
+            wynik += 1
+    if wynik == len(macierz):
+        return True
+    else:
+        return False
