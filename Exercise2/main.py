@@ -1,15 +1,16 @@
-import funkcje as f
+import numpy as np
+import funkcje as fun
 
+A = np.array([[1.0, 0.2, 0.3],
+              [0.1, 1.0, -0.3],
+              [-0.1, -0.2, 1.0]])
 
-macierz = [[3, 3, 1], [2, 5, 7], [1, 2, 1]]
-macierz2 = [[3, 3, 1, 2], [2, 5, 7, 3], [1, 2, 1, 4], [1, 2, 3, 4]]
-
-b = [[12], [33], [8]]
+b = np.array([1.5, 0.8, 0.7])
 
 
 def main():
-    print("dupa")
-    f.wypisz_macierz(macierz, 3)
+    wynik = fun.gaussSeidel(A, b, 10)
+    print(wynik)
 
 
 if __name__ == "__main__":
