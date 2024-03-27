@@ -11,6 +11,15 @@ def oblicz_wyznacznik(matrix):
     return wyznacznik
 
 
+def czy_diagonalnie_dominujaca(macierz):
+    n = macierz.shape[0]
+    for i in range(n):
+        suma = np.sum(np.abs(macierz[i])) - np.abs(macierz[i][i])
+        if np.abs(macierz[i][i]) <= suma:
+            return False
+        return True
+
+
 def gaussSeidel(A, b, max_iter=None, eps=None):
     if max_iter is not None and eps is not None:
         raise RuntimeError("Warunkami stopu dla funkcji nie może być jednocześnie ilość iteracji i epsilon!")

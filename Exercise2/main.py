@@ -7,8 +7,14 @@ A = np.array([[1.0, 0.2, 0.3],
 
 b = np.array([1.5, 0.8, 0.7])
 
+A1 = np.array([[3.0, 3.0, 1.0],
+              [2.0, 5.0, 7.0],
+              [1.0, 2.0, 1.0]])
+
 
 def main():
+    print(fun.czy_diagonalnie_dominujaca(A))
+    print(fun.czy_diagonalnie_dominujaca(A1))
     wynik = fun.gaussSeidel(A, b, 10)
     print(wynik)
 
