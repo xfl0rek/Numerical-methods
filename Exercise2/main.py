@@ -15,8 +15,9 @@ A1 = np.array([[3.0, 3.0, 1.0],
 def main():
     print(fun.czy_diagonalnie_dominujaca(A))
     print(fun.czy_diagonalnie_dominujaca(A1))
-    wynik = fun.gaussSeidel(A, b, 10)
-    print(wynik)
+    if fun.czy_diagonalnie_dominujaca(A):
+        wynik = fun.gauss_seidel(A, b, '1', 10, 0)
+        print(wynik)
 
 
 if __name__ == "__main__":

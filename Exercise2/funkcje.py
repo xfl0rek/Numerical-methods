@@ -20,11 +20,17 @@ def czy_diagonalnie_dominujaca(macierz):
         return True
 
 
-def gaussSeidel(A, b, max_iter=None, eps=None):
-    if max_iter is not None and eps is not None:
-        raise RuntimeError("Warunkami stopu dla funkcji nie może być jednocześnie ilość iteracji i epsilon!")
+def warunek(ktory_warunek):
+    if ktory_warunek == '1':
+        return 1
+    elif ktory_warunek == '2':
+        return "dupa"
+
+
+def gauss_seidel(A, b, ktory_warunek, max_iter, eps):
     x = np.zeros_like(b)
-    for it_count in range(1, max_iter):
+    iteracja = 1
+    while warunek(ktory_warunek) >= eps and iteracja <= max_iter:
         x_new = np.zeros_like(x)
         for i in range(A.shape[0]):
             s1 = np.dot(A[i, :i], x_new[:i])
@@ -33,4 +39,5 @@ def gaussSeidel(A, b, max_iter=None, eps=None):
         if np.allclose(x, x_new, rtol=1e-8):
             break
         x = x_new
+        iteracja += 1
     return x
