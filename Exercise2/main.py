@@ -8,20 +8,8 @@ b = [[12], [33], [8]]
 
 
 def main():
+    print("dupa")
     f.wypisz_macierz(macierz, 3)
-    print()
-    dupa = f.L(macierz2)
-    f.wypisz_macierz(dupa, 4)
-    print()
-    dupa2 = f.U(macierz2)
-    f.wypisz_macierz(dupa2, 4)
-    print()
-    dupa3 = f.D(macierz2)
-    f.wypisz_macierz(dupa3, 4)
-    print()
-    f.wypisz_macierz(b, 3)
-    print()
-    print(f.czy_dobrze_okreslona(macierz))
 
 
 if __name__ == "__main__":
