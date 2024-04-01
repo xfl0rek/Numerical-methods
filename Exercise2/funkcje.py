@@ -21,6 +21,7 @@ def czy_diagonalnie_dominujaca(macierz):
 
 
 def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
+    global k
     if oblicz_wyznacznik(A) == 0:
         print("Uklad sprzeczny")
         return None
@@ -44,4 +45,5 @@ def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
             x[i] = (b[i] - np.dot(A[i, :i], x[:i]) - np.dot(A[i, i + 1:], x_prev[i + 1:])) / A[i, i]
         if np.linalg.norm(x - x_prev) < epsilon:
             break
+    print(f"Znaleziono roziwazanie po {k + 1} iteracjach.")
     return x

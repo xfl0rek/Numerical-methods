@@ -6,7 +6,7 @@ def main():
     menu = True
     while menu:
         print("1. Wczytaj z pliku")
-        print("2. Podaj współczynniki ręcznie")
+        print("2. Podaj ilość równań")
         print("3. Koniec")
         wybor = input()
         if wybor == "1":
