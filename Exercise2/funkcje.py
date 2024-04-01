@@ -20,24 +20,28 @@ def czy_diagonalnie_dominujaca(macierz):
         return True
 
 
-def warunek(ktory_warunek):
-    if ktory_warunek == '1':
-        return 1
-    elif ktory_warunek == '2':
-        return "dupa"
+def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
+    if oblicz_wyznacznik(A) == 0:
+        print("Uklad sprzeczny")
+        return None
+    if not czy_diagonalnie_dominujaca(A):
+        print("Macierz nie jest diagonalnie dominujaca")
+        return None
+    n = len(b)
+    if x0 is None:
+        x0 = np.zeros(n)
+    if max_iter is None and epsilon is None:
+        raise ValueError("Musisz podać max_iter lub epsilon.")
+    if max_iter is None:
+        max_iter = 1000
+    if epsilon is None:
+        epsilon = 1e-10
 
-
-def gauss_seidel(A, b, ktory_warunek, max_iter, eps):
-    x = np.zeros_like(b)
-    iteracja = 1
-    while warunek(ktory_warunek) >= eps and iteracja <= max_iter:
-        x_new = np.zeros_like(x)
-        for i in range(A.shape[0]):
-            s1 = np.dot(A[i, :i], x_new[:i])
-            s2 = np.dot(A[i, i + 1:], x[i + 1:])
-            x_new[i] = (b[i] - s1 - s2) / A[i, i]
-        if np.allclose(x, x_new, rtol=1e-8):
+    x = x0.copy()
+    for k in range(max_iter):
+        x_prev = x.copy()
+        for i in range(n):
+            x[i] = (b[i] - np.dot(A[i, :i], x[:i]) - np.dot(A[i, i + 1:], x_prev[i + 1:])) / A[i, i]
+        if np.linalg.norm(x - x_prev) < epsilon:
             break
-        x = x_new
-        iteracja += 1
     return x
