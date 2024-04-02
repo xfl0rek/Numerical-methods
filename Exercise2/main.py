@@ -46,13 +46,14 @@ def main():
                     wybrane_rownania = []
                     wyniki = []
                     for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} rownania:")
+                        print(f"Podaj nazwę {i + 1} pliku z równaniem:")
                         x = input()
                         wybrane_rownania.append(x)
 
                     for i in range(len(wybrane_rownania)):
                         przyklad = wybrane_rownania[i]
                         macierz, b = op.wczytaj_macierz(przyklad)
+                        print(f"{i + 1} plik:")
                         wynik = fun.gauss_seidel(macierz, b, None, max_iter, None)
                         wyniki.append(wynik)
                     print(wyniki)
@@ -62,12 +63,13 @@ def main():
                     wybrane_rownania = []
                     wyniki = []
                     for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} rownania:")
+                        print(f"Podaj nazwę {i + 1} pliku z równaniem:")
                         x = input()
                         wybrane_rownania.append(x)
                     for i in range(len(wybrane_rownania)):
                         przyklad = wybrane_rownania[i]
                         macierz, b = op.wczytaj_macierz(przyklad)
+                        print(f"{i + 1} plik:")
                         wynik = fun.gauss_seidel(macierz, b, None, None, epsilon)
                         wyniki.append(wynik)
                     print(wyniki)
