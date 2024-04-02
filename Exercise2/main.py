@@ -34,44 +34,47 @@ def main():
         elif wybor == "2":
             print("Podaj ile równań chcesz rozwiązać:")
             ile = int(input())
-            print("Wybierz kryterium zatrzymania")
-            print("1. Liczba iteracji")
-            print("2. Dokładność")
-            wybor2 = input()
+            if 0 < ile <= 10:
+                print("Wybierz kryterium zatrzymania")
+                print("1. Liczba iteracji")
+                print("2. Dokładność")
+                wybor2 = input()
 
-            if wybor2 == "1":
-                print("Podaj maksymalna liczbe iteracji:")
-                max_iter = int(input())
-                wybrane_rownania = []
-                wyniki = []
-                for i in range(ile):
-                    print(f"Podaj nazwę {i + 1} rownania:")
-                    x = input()
-                    wybrane_rownania.append(x)
+                if wybor2 == "1":
+                    print("Podaj maksymalna liczbe iteracji:")
+                    max_iter = int(input())
+                    wybrane_rownania = []
+                    wyniki = []
+                    for i in range(ile):
+                        print(f"Podaj nazwę {i + 1} rownania:")
+                        x = input()
+                        wybrane_rownania.append(x)
 
-                for i in range(len(wybrane_rownania)):
-                    przyklad = wybrane_rownania[i]
-                    macierz, b = op.wczytaj_macierz(przyklad)
-                    wynik = fun.gauss_seidel(macierz, b, None, max_iter, None)
-                    wyniki.append(wynik)
-                print(wyniki)
-            elif wybor2 == "2":
-                print("Podaj dokładność:")
-                epsilon = float(input())
-                wybrane_rownania = []
-                wyniki = []
-                for i in range(ile):
-                    print(f"Podaj nazwę {i + 1} rownania:")
-                    x = input()
-                    wybrane_rownania.append(x)
-                for i in range(len(wybrane_rownania)):
-                    przyklad = wybrane_rownania[i]
-                    macierz, b = op.wczytaj_macierz(przyklad)
-                    wynik = fun.gauss_seidel(macierz, b, None, None, epsilon)
-                    wyniki.append(wynik)
-                print(wyniki)
+                    for i in range(len(wybrane_rownania)):
+                        przyklad = wybrane_rownania[i]
+                        macierz, b = op.wczytaj_macierz(przyklad)
+                        wynik = fun.gauss_seidel(macierz, b, None, max_iter, None)
+                        wyniki.append(wynik)
+                    print(wyniki)
+                elif wybor2 == "2":
+                    print("Podaj dokładność:")
+                    epsilon = float(input())
+                    wybrane_rownania = []
+                    wyniki = []
+                    for i in range(ile):
+                        print(f"Podaj nazwę {i + 1} rownania:")
+                        x = input()
+                        wybrane_rownania.append(x)
+                    for i in range(len(wybrane_rownania)):
+                        przyklad = wybrane_rownania[i]
+                        macierz, b = op.wczytaj_macierz(przyklad)
+                        wynik = fun.gauss_seidel(macierz, b, None, None, epsilon)
+                        wyniki.append(wynik)
+                    print(wyniki)
+                else:
+                    print("Niepoprawny wybór.")
             else:
-                print("Niepoprawny wybór.")
+                print("Podano niepoprawną ilość równań.")
         else:
             menu = False
 
