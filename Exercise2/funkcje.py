@@ -23,10 +23,10 @@ def czy_diagonalnie_dominujaca(macierz):
 def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
     global k
     if oblicz_wyznacznik(A) == 0:
-        print("Uklad sprzeczny")
+        print("Uklad jest nieoznaczony lub sprzeczny.")
         return None
     if not czy_diagonalnie_dominujaca(A):
-        print("Macierz nie jest diagonalnie dominujaca")
+        print("Macierz nie jest diagonalnie dominujaca.")
         return None
     n = len(b)
     if x0 is None:

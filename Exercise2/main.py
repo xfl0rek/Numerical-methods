@@ -6,7 +6,7 @@ def main():
     menu = True
     while menu:
         print("1. Wczytaj z pliku")
-        print("2. Podaj ilość równań")
+        print("2. Podaj ilość układów")
         print("3. Koniec")
         wybor = input()
         if wybor == "1":
@@ -32,7 +32,7 @@ def main():
             else:
                 print("Niepoprawny wybór.")
         elif wybor == "2":
-            print("Podaj ile równań chcesz rozwiązać:")
+            print("Podaj ile układów chcesz rozwiązać:")
             ile = int(input())
             if 0 < ile <= 10:
                 print("Wybierz kryterium zatrzymania")
@@ -46,7 +46,7 @@ def main():
                     wybrane_rownania = []
                     wyniki = []
                     for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} pliku z równaniem:")
+                        print(f"Podaj nazwę {i + 1} pliku:")
                         x = input()
                         wybrane_rownania.append(x)
 
@@ -63,7 +63,7 @@ def main():
                     wybrane_rownania = []
                     wyniki = []
                     for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} pliku z równaniem:")
+                        print(f"Podaj nazwę {i + 1} pliku:")
                         x = input()
                         wybrane_rownania.append(x)
                     for i in range(len(wybrane_rownania)):
@@ -76,7 +76,7 @@ def main():
                 else:
                     print("Niepoprawny wybór.")
             else:
-                print("Podano niepoprawną ilość równań.")
+                print("Podano niepoprawną ilość układów.")
         else:
             menu = False
 
