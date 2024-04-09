@@ -17,7 +17,7 @@ def czy_diagonalnie_dominujaca(macierz):
         suma = np.sum(np.abs(macierz[i])) - np.abs(macierz[i][i])
         if np.abs(macierz[i][i]) <= suma:
             return False
-        return True
+    return True
 
 
 def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
