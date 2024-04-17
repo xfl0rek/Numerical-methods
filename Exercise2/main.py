@@ -1,82 +1,82 @@
-import operacje_plikowe as op
-import funkcje as fun
+import file_operations as op
+import functions as fun
 
 
 def main():
     menu = True
     while menu:
-        print("1. Wczytaj z pliku")
-        print("2. Podaj ilość układów")
-        print("3. Koniec")
-        wybor = input()
-        if wybor == "1":
-            print("Podaj pzykład (*.txt): ")
-            przyklad = input()
-            print("Wybierz kryterium zatrzymania")
-            print("1. Liczba iteracji")
-            print("2. Dokładność")
-            wybor2 = input()
+        print("1. Load from file")
+        print("2. Enter the number of systems")
+        print("3. Exit")
+        choice = input()
+        if choice == "1":
+            print("Enter example (*.txt): ")
+            example = input()
+            print("Choose stopping criterion")
+            print("1. Number of iterations")
+            print("2. Accuracy")
+            choice2 = input()
 
-            if wybor2 == "1":
-                macierz, b = op.wczytaj_macierz(przyklad)
-                print("Podaj maksymalną liczbę iteracji:")
+            if choice2 == "1":
+                matrix, b = op.load_matrix(example)
+                print("Enter the maximum number of iterations:")
                 max_iter = int(input())
-                wynik = fun.gauss_seidel(macierz, b, None, max_iter, None)
-                print(wynik)
-            elif wybor2 == "2":
-                macierz, b = op.wczytaj_macierz(przyklad)
-                print("Podaj dokładność: ")
+                result = fun.gauss_seidel(matrix, b, None, max_iter, None)
+                print(result)
+            elif choice2 == "2":
+                matrix, b = op.load_matrix(example)
+                print("Enter accuracy: ")
                 epsilon = float(input())
-                wynik = fun.gauss_seidel(macierz, b, None, None, epsilon)
-                print(wynik)
+                result = fun.gauss_seidel(matrix, b, None, None, epsilon)
+                print(result)
             else:
-                print("Niepoprawny wybór.")
-        elif wybor == "2":
-            print("Podaj ile układów chcesz rozwiązać:")
-            ile = int(input())
-            if 0 < ile <= 10:
-                print("Wybierz kryterium zatrzymania")
-                print("1. Liczba iteracji")
-                print("2. Dokładność")
-                wybor2 = input()
+                print("Invalid choice.")
+        elif choice == "2":
+            print("Enter how many systems you want to solve:")
+            num_systems = int(input())
+            if 0 < num_systems <= 10:
+                print("Choose stopping criterion")
+                print("1. Number of iterations")
+                print("2. Accuracy")
+                choice2 = input()
 
-                if wybor2 == "1":
-                    print("Podaj maksymalna liczbe iteracji:")
+                if choice2 == "1":
+                    print("Enter the maximum number of iterations:")
                     max_iter = int(input())
-                    wybrane_rownania = []
-                    wyniki = []
-                    for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} pliku:")
-                        x = input()
-                        wybrane_rownania.append(x)
+                    selected_equations = []
+                    results = []
+                    for i in range(num_systems):
+                        print(f"Enter the name of file {i + 1}:")
+                        file_name = input()
+                        selected_equations.append(file_name)
 
-                    for i in range(len(wybrane_rownania)):
-                        przyklad = wybrane_rownania[i]
-                        macierz, b = op.wczytaj_macierz(przyklad)
-                        print(f"{i + 1} plik:")
-                        wynik = fun.gauss_seidel(macierz, b, None, max_iter, None)
-                        wyniki.append(wynik)
-                    print(wyniki)
-                elif wybor2 == "2":
-                    print("Podaj dokładność:")
+                    for i in range(len(selected_equations)):
+                        example = selected_equations[i]
+                        matrix, b = op.load_matrix(example)
+                        print(f"File {i + 1}:")
+                        result = fun.gauss_seidel(matrix, b, None, max_iter, None)
+                        results.append(result)
+                    print(results)
+                elif choice2 == "2":
+                    print("Enter accuracy:")
                     epsilon = float(input())
-                    wybrane_rownania = []
-                    wyniki = []
-                    for i in range(ile):
-                        print(f"Podaj nazwę {i + 1} pliku:")
-                        x = input()
-                        wybrane_rownania.append(x)
-                    for i in range(len(wybrane_rownania)):
-                        przyklad = wybrane_rownania[i]
-                        macierz, b = op.wczytaj_macierz(przyklad)
-                        print(f"{i + 1} plik:")
-                        wynik = fun.gauss_seidel(macierz, b, None, None, epsilon)
-                        wyniki.append(wynik)
-                    print(wyniki)
+                    selected_equations = []
+                    results = []
+                    for i in range(num_systems):
+                        print(f"Enter the name of file {i + 1}:")
+                        file_name = input()
+                        selected_equations.append(file_name)
+                    for i in range(len(selected_equations)):
+                        example = selected_equations[i]
+                        matrix, b = op.load_matrix(example)
+                        print(f"File {i + 1}:")
+                        result = fun.gauss_seidel(matrix, b, None, None, epsilon)
+                        results.append(result)
+                    print(results)
                 else:
-                    print("Niepoprawny wybór.")
+                    print("Invalid choice.")
             else:
-                print("Podano niepoprawną ilość układów.")
+                print("Invalid number of systems provided.")
         else:
             menu = False
 

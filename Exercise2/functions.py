@@ -1,33 +1,33 @@
 import numpy as np
 
 
-def oblicz_wyznacznik(matrix):
-    wyznacznik = np.linalg.det(matrix)
-    return wyznacznik
+def calculate_determinant(matrix):
+    determinant = np.linalg.det(matrix)
+    return determinant
 
 
-def czy_diagonalnie_dominujaca(macierz):
-    n = macierz.shape[0]
+def is_diagonally_dominant(matrix):
+    n = matrix.shape[0]
     for i in range(n):
-        suma = np.sum(np.abs(macierz[i])) - np.abs(macierz[i][i])
-        if np.abs(macierz[i][i]) <= suma:
+        row_sum = np.sum(np.abs(matrix[i])) - np.abs(matrix[i][i])
+        if np.abs(matrix[i][i]) <= row_sum:
             return False
     return True
 
 
 def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
     global k
-    if oblicz_wyznacznik(A) == 0:
-        print("Uklad jest nieoznaczony lub sprzeczny.")
+    if calculate_determinant(A) == 0:
+        print("The system is either indeterminate or inconsistent.")
         return None
-    if not czy_diagonalnie_dominujaca(A):
-        print("Macierz nie jest diagonalnie dominujaca.")
+    if not is_diagonally_dominant(A):
+        print("The matrix is not diagonally dominant.")
         return None
     n = len(b)
     if x0 is None:
         x0 = np.zeros(n)
     if max_iter is None and epsilon is None:
-        raise ValueError("Musisz podać max_iter lub epsilon.")
+        raise ValueError("You must provide either max_iter or epsilon.")
     if max_iter is None:
         max_iter = 1000
     if epsilon is None:
@@ -40,5 +40,5 @@ def gauss_seidel(A, b, x0=None, max_iter=None, epsilon=None):
             x[i] = (b[i] - np.dot(A[i, :i], x[:i]) - np.dot(A[i, i + 1:], x_prev[i + 1:])) / A[i, i]
         if np.linalg.norm(x - x_prev) < epsilon:
             break
-    print(f"Znaleziono roziwazanie po {k + 1} iteracjach.")
+    print(f"Solution found after {k + 1} iterations.")
     return x
