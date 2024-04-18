@@ -24,16 +24,16 @@ def composite(x):
     return abs(math.cos(x) * x)
 
 
-def function_value(type, x):
-    if type == "1":
-        return linear(x)
-    elif type == "2":
-        return absolute(x)
-    elif type == "3":
-        return horner([-5, 4, 1], x, 3)
-    elif type == "4":
-        return trigonometric(x)
-    elif type == "5":
-        return composite(x)
+def function_value(function_type, x):
+    functions = {
+        "1": linear,
+        "2": absolute,
+        "3": lambda x: horner([-5, 4, 1], x, 3),
+        "4": trigonometric,
+        "5": composite
+    }
+    selected_function = functions.get(function_type)
+    if selected_function:
+        return selected_function(x)
     else:
         print("Incorrect function type provided.")
