@@ -26,16 +26,12 @@ def composite(x):
     return abs(np.cos(x) * x)
 
 
-def function_value(function_type, x):
+def function_value(function_type):
     functions = {
         "1": linear,
         "2": absolute,
-        "3": lambda x: horner(x),
+        "3": horner,
         "4": trigonometric,
         "5": composite
     }
-    selected_function = functions.get(function_type)
-    if selected_function:
-        return selected_function(x)
-    else:
-        print("Incorrect function type provided.")
+    return functions.get(function_type)
