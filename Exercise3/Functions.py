@@ -9,11 +9,11 @@ def absolute(x):
     return abs(x)
 
 
-def horner(x):
+def polynomial(x):
     length = 3
     coefficients = [-5, 4, 1]
-    result = 0
-    for i in range(length - 1, -1, -1):
+    result = coefficients[0]
+    for i in range(1, length):
         result = result * x + coefficients[i]
     return result
 
@@ -30,7 +30,7 @@ def function_value(function_type):
     functions = {
         "1": linear,
         "2": absolute,
-        "3": horner,
+        "3": polynomial,
         "4": trigonometric,
         "5": composite
     }
