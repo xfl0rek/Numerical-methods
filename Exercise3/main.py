@@ -1,4 +1,5 @@
 import functions as f
+import LagrangeInterpolation
 
 
 def main():
@@ -11,4 +12,10 @@ def main():
 
 
 if __name__ == "__main__":
+    nodes = [1, 2, 3, 4]
+    values = [1, 4, 9, 16]
+    lagrange_interpolation = LagrangeInterpolation.LagrangeInterpolation(nodes, values)
+    plotter = LagrangeInterpolation.InterpolationPlotter(f.composite, lagrange_interpolation, nodes, values)
+    plotter.plot()
+
     main()

@@ -1,4 +1,4 @@
-import math
+import numpy as np
 
 
 def linear(x):
@@ -9,7 +9,9 @@ def absolute(x):
     return abs(x)
 
 
-def horner(coefficients, x, length):
+def horner(x):
+    length = 3
+    coefficients = [-5, 4, 1]
     result = 0
     for i in range(length - 1, -1, -1):
         result = result * x + coefficients[i]
@@ -17,18 +19,18 @@ def horner(coefficients, x, length):
 
 
 def trigonometric(x):
-    return 2 * math.sin(4 * x)
+    return 2 * np.sin(4 * x)
 
 
 def composite(x):
-    return abs(math.cos(x) * x)
+    return abs(np.cos(x) * x)
 
 
 def function_value(function_type, x):
     functions = {
         "1": linear,
         "2": absolute,
-        "3": lambda x: horner([-5, 4, 1], x, 3),
+        "3": lambda x: horner(x),
         "4": trigonometric,
         "5": composite
     }

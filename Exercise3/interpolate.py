@@ -1,4 +1,0 @@
-
-
-def interpolate():
-    return None
