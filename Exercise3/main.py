@@ -15,15 +15,21 @@ def main():
 
     num_nodes = int(input("Enter the number of interpolation nodes: "))
 
-    nodes = [start_interval + (end_interval - start_interval) * i / (num_nodes - 1) for i in range(num_nodes)]
-    values = [f.function_value(function_type)(node) for node in nodes]
+    nodes = []
+    values = []
+    print("Enter the coordinates of interpolation nodes:")
+    for _ in range(num_nodes):
+        node = float(input("Node: "))
+        value = f.function_value(function_type)(node)
+        nodes.append(node)
+        values.append(value)
 
     interpolation_function = f.function_value(function_type)
 
     lagrange_interpolation = LagrangeInterpolation.LagrangeInterpolation(nodes, values, interpolation_function)
 
     plotter = InterpolationPlotter.InterpolationPlotter(interpolation_function, lagrange_interpolation, nodes, values)
-    plotter.plot()
+    plotter.plot(start_interval, end_interval)
 
 
 if __name__ == "__main__":

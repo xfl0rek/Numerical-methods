@@ -9,8 +9,8 @@ class InterpolationPlotter:
         self.nodes = nodes
         self.values = values
 
-    def plot(self):
-        x_values = np.linspace(min(self.nodes), max(self.nodes), 1000)
+    def plot(self, start_interval, end_interval):
+        x_values = np.linspace(start_interval, end_interval, 1000)
         original_values = self.original_function(x_values)
         interpolation_values = [self.interpolation_function.interpolate(x) for x in x_values]
 
