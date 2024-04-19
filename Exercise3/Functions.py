@@ -10,8 +10,8 @@ def absolute(x):
 
 
 def polynomial(x):
-    length = 3
-    coefficients = [-5, 4, 1]
+    length = 4
+    coefficients = [1, 0, -2, 7]
     result = coefficients[0]
     for i in range(1, length):
         result = result * x + coefficients[i]
