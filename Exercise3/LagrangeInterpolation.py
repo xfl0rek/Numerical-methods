@@ -1,7 +1,8 @@
 class LagrangeInterpolation:
-    def __init__(self, nodes, values):
+    def __init__(self, nodes, values, interpolation_function):
         self.nodes = nodes
         self.values = values
+        self.interpolation_function = interpolation_function
 
     def interpolate(self, x):
         result = 0

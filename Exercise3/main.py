@@ -18,16 +18,13 @@ def main():
         print("File not found.")
         return
 
-    if function_type == "3":
-        interpolation_function = f.horner
-    else:
-        interpolation_function = f.function_value(function_type)
+    interpolation_function = f.function_value(function_type)
 
     if interpolation_function is None:
         print("Invalid function type.")
         return
 
-    lagrange_interpolation = LagrangeInterpolation.LagrangeInterpolation(nodes, values)
+    lagrange_interpolation = LagrangeInterpolation.LagrangeInterpolation(nodes, values, interpolation_function)
     plotter = InterpolationPlotter.InterpolationPlotter(interpolation_function, lagrange_interpolation, nodes, values)
     plotter.plot()
 
