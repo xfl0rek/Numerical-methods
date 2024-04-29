@@ -4,7 +4,12 @@ import Functions as f
 
 def main():
     function_type = input(
-        "Choose the interpolated function (1 - linear, 2 - |x|, 3 - polynomial, 4 - trigonometric, 5 - composite): ")
+        "Choose the interpolated function: \n"
+        "1 - linear (5x - 2)\n "
+        "2 - |x|\n "
+        "3 - polynomial (x^3 - 2x + 7)\n "
+        "4 - trigonometric (2sin(4x))\n "
+        "5 - composite (2 ^ (cos(4x)))\n")
     if function_type not in ["1", "2", "3", "4", "5"]:
         print("Invalid function type selected.")
         return

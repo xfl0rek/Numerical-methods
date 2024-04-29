@@ -23,7 +23,7 @@ def trigonometric(x):
 
 
 def composite(x):
-    return abs(np.cos(x) * x)
+    return 2 ** (np.cos(4 * x))
 
 
 def function_value(function_type):
