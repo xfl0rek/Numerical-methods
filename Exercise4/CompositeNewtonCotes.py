@@ -1,6 +1,3 @@
-from scipy.integrate import quad
-
-
 class CompositeNewtonCotes:
     def __init__(self, function):
         self.function = function
@@ -16,7 +13,8 @@ class CompositeNewtonCotes:
 
             for i in range(n):
                 x1 = a + i * h
-                result += quad(self.function, x0, x1)[0]
+                x2 = a + (i + 1) * h
+                result += self.simpson(x0, x2)
                 x0 = x1
 
             if prev_result is not None and abs(result - prev_result) < tolerance:
@@ -26,3 +24,7 @@ class CompositeNewtonCotes:
             n *= 2
 
         return result
+
+    def simpson(self, x1, x2):
+        h = (x2 - x1) / 2
+        return (h / 2) * (self.function(x1) + 4 * self.function((x1 + x2) / 2) + self.function(x2)) / 3
