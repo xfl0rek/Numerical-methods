@@ -1,5 +1,5 @@
-from scipy.integrate import quad
-import Functions as f
+from Functions import function_value
+from CompositeNewtonCotes import CompositeNewtonCotes
 
 
 def main():
@@ -16,10 +16,16 @@ def main():
 
     start_interval = float(input("Enter the start of the interpolation interval: "))
     end_interval = float(input("Enter the end of the interpolation interval: "))
+    tolerance = float(input("Enter the tolerance for the integration: "))
 
-    result, error = quad(f.function_value(function_type), start_interval, end_interval)
-    print(result)
-    print(error)
+    selected_function = function_value(function_type)
+    if selected_function is None:
+        print("Invalid function type selected.")
+        return
+
+    integrator = CompositeNewtonCotes(selected_function)
+    result = integrator.integrate(start_interval, end_interval, 1, tolerance)
+    print("Result of integration:", result)
 
 
 if __name__ == "__main__":
