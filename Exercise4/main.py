@@ -18,6 +18,7 @@ def main():
     start_interval = float(input("Enter the start of the interpolation interval: "))
     end_interval = float(input("Enter the end of the interpolation interval: "))
     tolerance = float(input("Enter the tolerance for the integration: "))
+    degree = int(input("Enter the degree for the Lagendre Quadrature: "))
 
     selected_function = function_value(function_type)
     if selected_function is None:
@@ -25,11 +26,15 @@ def main():
         return
 
     integrator = CompositeNewtonCotes(selected_function)
-    integrator2 = LegendreQuadrature(selected_function)
     result = integrator.integrate(start_interval, end_interval, 1, tolerance)
-    result2 = integrator2.integrate(start_interval, end_interval)
     print("Result of composite Newton Cotes: ", result)
-    print("Result of Legendre quadrature: ", result2)
+
+    if degree == 2 or degree == 3 or degree == 4 or degree == 5:
+        integrator2 = LegendreQuadrature(selected_function, degree)
+        result2 = integrator2.integrate(start_interval, end_interval)
+        print("Result of Legendre quadrature: ", result2)
+    else:
+        print("Invalid degree.")
 
 
 if __name__ == "__main__":
