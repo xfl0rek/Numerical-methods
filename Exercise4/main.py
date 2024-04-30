@@ -1,5 +1,6 @@
 from Functions import function_value
 from CompositeNewtonCotes import CompositeNewtonCotes
+from LegendreQuadrature import LegendreQuadrature
 
 
 def main():
@@ -24,8 +25,11 @@ def main():
         return
 
     integrator = CompositeNewtonCotes(selected_function)
+    integrator2 = LegendreQuadrature(selected_function)
     result = integrator.integrate(start_interval, end_interval, 1, tolerance)
-    print("Result of integration:", result)
+    result2 = integrator2.integrate(start_interval, end_interval)
+    print("Result of composite Newton Cotes: ", result)
+    print("Result of Legendre quadrature: ", result2)
 
 
 if __name__ == "__main__":
