@@ -2,7 +2,7 @@ class CompositeNewtonCotes:
     def __init__(self, function):
         self.function = function
 
-    def integrate(self, a, b, n, tolerance, max_iterations=1000):
+    def integrate(self, a, b, n, epsilon, max_iterations=1000):
         global result
         prev_result = None
 
@@ -15,7 +15,7 @@ class CompositeNewtonCotes:
                 x2 = a + (i + 1) * h
                 result += self.simpson(x1, x2)
 
-            if prev_result is not None and abs(result - prev_result) < tolerance:
+            if prev_result is not None and abs(result - prev_result) < epsilon:
                 break
 
             prev_result = result

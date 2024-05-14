@@ -2,9 +2,9 @@ from scipy.special import roots_legendre
 
 
 class LegendreQuadrature:
-    def __init__(self, function, degree=5):
+    def __init__(self, function, nodes=5):
         self.function = function
-        self.degree = degree
+        self.degree = nodes
 
     def integrate(self, a, b):
         x_mapped = lambda t: (b - a) / 2 * t + (b + a) / 2

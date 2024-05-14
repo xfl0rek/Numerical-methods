@@ -17,7 +17,7 @@ def main():
 
     start_interval = float(input("Enter the start of the interpolation interval: "))
     end_interval = float(input("Enter the end of the interpolation interval: "))
-    tolerance = float(input("Enter the tolerance for the integration: "))
+    epsilon = float(input("Enter the tolerance for the integration: "))
     nodes = int(input("Enter the nodes for the Lagendre Quadrature: "))
 
     selected_function = function_value(function_type)
@@ -26,7 +26,7 @@ def main():
         return
 
     integrator = CompositeNewtonCotes(selected_function)
-    result = integrator.integrate(start_interval, end_interval, 1, tolerance)
+    result = integrator.integrate(start_interval, end_interval, 1, epsilon)
     print("Result of composite Newton Cotes: ", result)
 
     if nodes == 2 or nodes == 3 or nodes == 4 or nodes == 5:
