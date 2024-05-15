@@ -1,6 +1,7 @@
 from Functions import function_value
 from CompositeNewtonCotes import CompositeNewtonCotes
 from LegendreQuadrature import LegendreQuadrature
+from Plotting import plot_function
 
 
 def main():
@@ -35,6 +36,8 @@ def main():
         print("Result of Legendre quadrature: ", result2)
     else:
         print("Invalid degree.")
+
+    plot_function(selected_function, start_interval, end_interval, function_type)
 
 
 if __name__ == "__main__":
