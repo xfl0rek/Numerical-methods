@@ -5,6 +5,13 @@ from LegendreApproximation import LegendreApproximation
 from Plotter import Plotter
 
 
+def calculate_approximation_error(original_values, approximated_values):
+    errors = [abs(orig - approx) for orig, approx in zip(original_values, approximated_values)]
+    max_error = max(errors)
+    mean_error = sum(errors) / len(errors)
+    return max_error, mean_error
+
+
 def main():
     function_type = input(
         "Choose the approximated function: \n"
@@ -31,6 +38,10 @@ def main():
     x_values = np.linspace(approximation_start, approximation_end, 1000)
     legendre_values = [legendre.function_value(x) for x in x_values]
     function_values = [selected_function(x) for x in x_values]
+
+    max_err, mean_err = calculate_approximation_error(function_values, legendre_values)
+    print(f"Max approximation error: {max_err}")
+    print(f"Mean approximation error: {mean_err}")
 
     Plotter.plot_legendre_and_function(legendre_values, function_values, x_values)
 
