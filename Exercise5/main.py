@@ -1,4 +1,8 @@
+import numpy as np
+from matplotlib import pyplot as plt
+
 from Functions import function_value
+from LegendreApproximation import LegendreApproximation
 
 
 def main():
@@ -22,6 +26,17 @@ def main():
     if selected_function is None:
         print("Invalid function type selected.")
         return
+
+    legendre = LegendreApproximation(approximating_polynomial_degree)
+    x_values = np.linspace(approximation_start, approximation_end, 1000)
+    legendre_values = [legendre.function_value(x) for x in x_values]
+
+    plt.plot(x_values, legendre_values)
+    plt.title("Legendre Polynomial")
+    plt.xlabel("x")
+    plt.ylabel("Legendre Polynomial Value")
+    plt.grid(True)
+    plt.show()
 
 
 if __name__ == "__main__":
