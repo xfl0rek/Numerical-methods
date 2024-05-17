@@ -1,8 +1,8 @@
 import numpy as np
-from matplotlib import pyplot as plt
 
 from Functions import function_value
 from LegendreApproximation import LegendreApproximation
+from Plotter import Plotter
 
 
 def main():
@@ -30,13 +30,9 @@ def main():
     legendre = LegendreApproximation(approximating_polynomial_degree)
     x_values = np.linspace(approximation_start, approximation_end, 1000)
     legendre_values = [legendre.function_value(x) for x in x_values]
+    function_values = [selected_function(x) for x in x_values]
 
-    plt.plot(x_values, legendre_values)
-    plt.title("Legendre Polynomial")
-    plt.xlabel("x")
-    plt.ylabel("Legendre Polynomial Value")
-    plt.grid(True)
-    plt.show()
+    Plotter.plot_legendre_and_function(legendre_values, function_values, x_values)
 
 
 if __name__ == "__main__":
