@@ -43,7 +43,7 @@ def main():
     print(f"Max approximation error: {max_err}")
     print(f"Mean approximation error: {mean_err}")
 
-    Plotter.plot_legendre_and_function(legendre_values, function_values, x_values)
+    Plotter.plot_legendre_and_function(legendre_values, function_values, x_values, function_type)
 
 
 if __name__ == "__main__":
