@@ -19,7 +19,7 @@ def polynomial(x):
 
 
 def trigonometric(x):
-    return 2 * np.sin(4 * x)
+    return np.sin(x)
 
 
 def composite(x):

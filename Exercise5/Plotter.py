@@ -11,7 +11,7 @@ class Plotter:
         elif f_type == '3':
             plt.title("x^3 - 2x + 7")
         elif f_type == "4":
-            plt.title("2sin(4x)")
+            plt.title("sin(x)")
         elif f_type == "5":
             plt.title("2 ^ (cos(4x))")
 
