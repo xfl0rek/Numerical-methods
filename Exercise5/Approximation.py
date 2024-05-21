@@ -12,10 +12,6 @@ class Approximation:
         self.n = n
         self.epsilon = epsilon
 
-    def approximated_function(self, x):
-        lp = LegendrePolynomial(self.degree)
-        return lp.value(x) * self.function(x)
-
     def ApproximationCoefficients(self):
         tab = []
         for i in range(self.degree + 1):
