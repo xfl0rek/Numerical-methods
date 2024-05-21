@@ -33,3 +33,10 @@ class Approximation:
             lp = LegendrePolynomial(i)
             result += tab[i] * lp.value(x)
         return result
+
+    def ErrorHelper(self, x):
+        return (self.function(x) - self.ApproximationPolynomial(x)) ** 2
+
+    def ApproximationError(self):
+        integrator = CompositeNewtonCotes(self.ErrorHelper)
+        return integrator.integrate(self.a, self.b, self.n, self.epsilon)

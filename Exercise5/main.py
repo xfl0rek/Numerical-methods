@@ -29,6 +29,9 @@ def main():
     plotter = Plotter()
     plotter.plot_legendre_and_function(approximated_values, original_values, x_values, function_type)
 
+    error = approximation.ApproximationError()
+    print("\nApproximation error: ", error)
+
 
 if __name__ == "__main__":
     main()
